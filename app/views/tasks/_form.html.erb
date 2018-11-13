@@ -1,20 +1,41 @@
+<div class="row">
+<!--767px以下(xs) では、12カラム（最大）で表示
+768px (sm) 以上では、 offset として2カラム追加して、8カラムで表示
+ただし1200px以上 (lg) の場合は、offset として3カラム追加して、6カラム（半分）で表示
+-->
+  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6">
 <%= form_for task do |f| %>
 
-  <% if task.errors.any? %>
-  <div id="error_explanation">
+<% if task.errors.any? %>
+  <div class="alert alert-warning">
     <ul>
-      <% task.errors.full_messages.each do |task| %>
-      <li><%= task %></li>
-      <% end %>
+<% task.errors.full_messages.each do |task| %>
+      <li>
+<%= task %>
+</li>
+<% end %>
     </ul>
   </div>
-  <% end %>
-
- <%= f.label :content, 'タスク' %>
- <%= f.text_field :content %>
-
- <%= f.label :status, 'ステータス' %>
- <%= f.text_field :status %>
- 
- <%= f.submit '投稿' %>
 <% end %>
+
+
+    
+  <div class='form-group'>
+  
+<%= f.label :content, 'タスク' %>
+
+<%= f.text_field :content, class: 'form-control' %>
+
+  </div>
+
+
+  <div class="form-group">
+  
+<%= f.label :status, 'ステータス' %>
+<%= f.text_field :status, class: 'form-control' %>
+  </div>
+   
+<%= f.submit '投稿', class: 'btn btn-primary' %>
+<% end %>
+  </div>
+</div>
